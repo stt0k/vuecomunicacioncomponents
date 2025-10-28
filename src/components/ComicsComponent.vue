@@ -16,11 +16,11 @@ const seleccionarFavorito = (comic) => {
 }
 
 const createComic = () => {
-    comics.push(comicForm)
+    comics.value.push(comicForm.value)
 }
 
 const deleteComic = (index) => {
-    comics.splice(index, 1)
+    comics.value.splice(index, 1)
 }
 
 const comics = ref([
@@ -70,9 +70,9 @@ const comics = ref([
 
 </script>
 <template>
-        <div class="flex flex-col justify-center items-center mt-32">
+        <div class="flex flex-col justify-center items-center mt-10">
             <h2 class="text-2xl font-bold mb-10">Padre comics</h2>
-            <form v-on:sumbit.prevent="createComic" class="flex flex-col mb-5 justify-center gap-2" action="">
+            <form v-on:submit.prevent="createComic" class="flex flex-col mb-5 justify-center gap-2" action="">
                 <label>Titulo</label>
                 <input class="border rounded" type="text" v-model="comicForm.titulo">
                 <label>Imagen</label>
@@ -84,10 +84,10 @@ const comics = ref([
                 <button class="bg-blue-500 p-1 rounded cursor-pointer">Nuevo comic</button>
             </form>
             <h3 class="text-xl font-semibold mb-5">Comics Favoritos 
-                <span v-for="comic in comicFavorito" :key="comic.titulo" class="mx-2">{{ comicFavorito.titulo }}</span>
+                <span v-for="comic in comicFavorito" :key="comic.titulo" class="mx-2">{{ comic.titulo }}</span>
             </h3>
         <div class="mb-10" id="comics" v-for="(comic, i) in comics" :key="comic">
-            <ComicComponents :comic="comic" :index="i" v-on:deleteComic="deleteComic" v-on:seleccionarFavorito="seleccionarFavorito" />
+            <ComicComponents :comic="comic" :index="i" @deleteComic="deleteComic" @seleccionarFavorito="seleccionarFavorito" />
         </div>
     </div>
 </template>

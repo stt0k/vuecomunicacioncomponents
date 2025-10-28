@@ -1,16 +1,16 @@
 <script setup>
-import { defineProps, defineEmits } from "vue"
+// defineProps y defineEmits no necesitan importarse en <script setup>
 
 const props = defineProps(["comic", "index"])
-const emit = defineEmits(["comic", "index"])
+const emit = defineEmits(["seleccionarFavorito", "deleteComic"])
 
 const seleccionarFavorito = () => {
-    console.log(comic)
-    emit("seleccionarFavorito", comic)
+    console.log(props.comic)
+    emit("seleccionarFavorito", props.comic)
 }
 
 const deleteComic = () => {
-    emit("deleteComic", index)
+    emit("deleteComic", props.index)
 }
 
 </script>
