@@ -1,9 +1,9 @@
 <script setup>
-import PadreDeportes from './components/PadreDeportes.vue';
+import ComicsComponent from './components/ComicsComponent.vue';
 </script>
 
 <template>
   <div class="container mx-auto">
-      <PadreDeportes />
+      <ComicsComponent/>
   </div>
 </template>
